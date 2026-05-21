@@ -1,6 +1,7 @@
 const dotenv=require("dotenv");
 dotenv.config();
-
+const connectDB=require("./config/database");
+connectDB();
 const express=require("express");
 const cors=require("cors");
 
@@ -19,9 +20,6 @@ app.listen(PORT,()=>
 {
     console.log(`server is running on port ${PORT}`);
 });
-
-const connectDB=require("./config/database");
-connectDB();
 
 const authRoutes = require("./routes/authRoutes");
 app.use("/api/auth", authRoutes);
