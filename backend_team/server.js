@@ -3,12 +3,16 @@ dotenv.config();
 const connectDB=require("./config/database");
 connectDB();
 const express=require("express");
-const cors=require("cors");
+const cors = require("cors");
 
-const app=express();
 app.use(cors({
-  origin: "*",
+  origin: [
+    "http://localhost:5173",
+    "https://team-task-manager-theta-pied.vercel.app"
+  ],
+  credentials: true,
 }));
+
 app.use(express.json());
 app.get("/",(req,res)=>
 {
